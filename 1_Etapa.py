@@ -13,6 +13,8 @@ while not edad_valida:
     else:
         print("Ingresa un numero entero")
 
+#hola
+
 nivel_valido = False
 while not nivel_valido:
     if not (nivel := input("¿Actualmente estudias, trabajas o ninguna? ").strip().lower()):
