@@ -1,5 +1,7 @@
 print("Clasificación de cliente")
-while True:
+
+monto_valido = False
+while not monto_valido:
     if not (monto_str := input("Valor total de la compra: ").strip()):
         print("Debes ingresar algo")
         continue
@@ -9,16 +11,17 @@ while True:
         if monto < 0:
             print("El monto no puede ser negativo")
             continue
-        break
+        monto_valido = True
     else:
         print("Ingresa un número válido")
 
-while True:
+membresia_valida = False
+while not membresia_valida:
     if not (membresia := input("Tipo de membresía (activa/temporal/ninguna): ").strip().lower()):
         print("Debes ingresar algo")
         continue
     if membresia in ["activa", "temporal", "ninguna"]:
-        break
+        membresia_valida = True
     else:
         print("Escribe solo: activa, temporal o ninguna")
 
