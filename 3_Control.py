@@ -1,16 +1,18 @@
 usuario_restringido = ["pepe", "meow"]
+usuario_valido = False
+codigo_valido = False
 
 print("Control de acceso")
 
-while True:
+while not usuario_valido:
     if not (nombre_usuario := input("Tu nombre de usuario: ").strip().lower()):
         print("Debe digitar un usuario")
     elif nombre_usuario in usuario_restringido:
         print("Ese usuario está restringido. Ingrese otro")
     else:
-        break
+        usuario_valido = True
 
-while True:
+while not codigo_valido:
     if not (codigo_str := input("Tu código numérico: ").strip()):
         print("Debes digitar algo")
         continue
@@ -18,7 +20,7 @@ while True:
     if codigo_str.isdigit():
         codigo = int(codigo_str)
         if codigo >= 0:
-            break
+            codigo_valido = True
         else:
             print("El código no puede ser negativo")
     else:
