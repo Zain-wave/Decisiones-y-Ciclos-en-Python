@@ -2,15 +2,16 @@ luces_encendidas = False
 calefaccion_encendida = False
 temperatura_ambiente = 20
 es_de_noche = False
+ejecutando = True
 
 print("Panel de control doméstico\n")
 
-while True:
+while ejecutando:
     print(f"\nTemperatura actual: {temperatura_ambiente}°C")
     
     estado_luz = "Encendidas" if luces_encendidas else "Apagadas"
     estado_calefaccion = "Encendida" if calefaccion_encendida else "Apagada"
-    estado_tiempo = "Si" if es_de_noche else "No"
+    estado_tiempo = "Sí" if es_de_noche else "No"
     
     print(f"Estado de luces: {estado_luz}")
     print(f"Estado de calefacción: {estado_calefaccion}")
@@ -35,8 +36,8 @@ while True:
 
     match opcion:
         case 0:
-            print("Bye bye")
-            break
+            print("Bye bye 👋")
+            ejecutando = False
         
         case 1:
             if not luces_encendidas:
@@ -65,18 +66,21 @@ while True:
             
         case 3:
             es_de_noche = not es_de_noche
-            print(f"Ahora es {"de noche" if es_de_noche else "de dia"}")
+            print(f"Ahora es {'de noche' if es_de_noche else 'de día'}")
         
         case 4:
-            while True:
-                if not (temp_nueva_str := input("Nueva temperatura (ej 15): ").strip()):
-                    print("Debes ingresar algun valor valor")
+            temp_valida = False
+            while not temp_valida:
+                temp_nueva_str = input("Nueva temperatura (ej 15): ").strip()
+                
+                if not temp_nueva_str:
+                    print("Debes ingresar algún valor")
                     continue
                 
                 if temp_nueva_str.lstrip('-').isdigit():
                     temperatura_ambiente = int(temp_nueva_str)
                     print(f"Temperatura ajustada a {temperatura_ambiente}°C")
-                    break
+                    temp_valida = True
                 else:
                     print("Ingresa solo números enteros")
                     
